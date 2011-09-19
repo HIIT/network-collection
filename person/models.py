@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+class Person(models.Model):
+    name = models.CharField()
+    image = models.CharField()
+
+class Connection(moderls.Model):
+    initial = models.ForeignKey( Person )
+    target = models.ForeignKey( Person )
+    weight = models.IntegerField()
