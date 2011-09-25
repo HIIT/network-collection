@@ -1,0 +1,9 @@
+{% if users %}
+    <ul>
+    {% for user in users %}
+        <li><a href="/polls/{{ user.id }}/">{{ user.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No persons in the system</p>
+{% endif %}
