@@ -6,7 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
-    (r'^person/', 'sna.person.views.index' ),
+    (r'^person/$', 'sna.person.views.index' ),
+    (r'^person/(?P<id>\d+)$', 'sna.person.views.show'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
