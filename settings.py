@@ -89,6 +89,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth'
 )
 
+STATIC_ROOT = "/var/www/labs/sna/static"
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
