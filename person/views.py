@@ -14,5 +14,12 @@ def show( r , id ):
     return render_to_response('person/show.html', {'user': person, 'others' : persons }, context_instance=RequestContext (r ) )
 
 def data( r , id ):
-    print r
-    return HttpResponse("You're voting on poll %s." % id)
+    person = Person.objects.get( pk = id )
+    for i in r.POST.items():
+        if i[0].startswith('connection_to_'):
+	    target = int( i[0][14:] )
+            target = Person.objects.get( pk = target )
+	    weight = int( i[1] )
+            c = Connection( fromPerson = person, toPerson = target, weight = weight )
+            c.save()
+    return ''
