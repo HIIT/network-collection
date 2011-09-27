@@ -1,6 +1,7 @@
 <h1>{{ user.name }}</h1>
 
-<form action="/polls/{{ user.id }}/data_entry/" method="post">
+<form action="/person/{{ user.id }}/kissa" method="post">
+{% csrf_token %}
 {% for person in others %}
     <p>
     <b>{{ person.name }}</b>
