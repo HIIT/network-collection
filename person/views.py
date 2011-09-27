@@ -23,3 +23,6 @@ def data( r , id ):
             c = Connection( fromPerson = person, toPerson = target, weight = weight )
             c.save()
     return ''
+
+def statistics(r):
+    return ''
