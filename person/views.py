@@ -25,4 +25,5 @@ def data( r , id ):
     return ''
 
 def statistics(r):
-    return ''
+    connections = Connection.objects.all()
+    return render_to_response('person/statics.html', { 'connections' : connections } )

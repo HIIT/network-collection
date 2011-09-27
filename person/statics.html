@@ -1,0 +1,25 @@
+<script type='text/javascript' src='http://labs.humanisti.fixme.fi/sna/static/js/jit/jit.js'></script>
+
+<!-- doing JS here... ugly? -->
+
+<div id='graph'></div>
+
+<script type='text/javascript'>
+data = [ {
+'adjacencies' : [
+{% for link in connections  %}
+  {
+    'nodeFrom' : '{{ link.fromPerson.id }}',
+    'nodeTo' : '{{ link.toPerson.id }}',
+    'data' : { '$dim' : {{ link.weight }} }
+  } ,
+{% endfor %}
+]
+} ];
+
+var fd = new $jit.ForceDirected( {
+    injectInto: 'graph'
+} );
+
+fd.loadJSON(data);
+</script>
