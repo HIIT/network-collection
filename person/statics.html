@@ -10,7 +10,22 @@ data = {{ json }};
 {% endautoescape %}
 
 var fd = new $jit.ForceDirected( {  
-  injectInto: 'graph'
+  injectInto: 'graph' ,
+  Label : {
+    labelType : 'html',
+    size : 10
+  } ,
+  Node: {
+    color : '#000',
+    type : 'circle',
+    dim : 10
+  },
+  onCreateLabel: function(domElement, node){  
+    domElement.innerHTML = node.name;  
+    var style = domElement.style;  
+    style.fontSize = "0.8em";  
+    style.color = "#ddd";  
+  } 
 } );  
 
 // display data  
