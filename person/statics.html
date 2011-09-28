@@ -2,24 +2,18 @@
 
 <!-- doing JS here... ugly? -->
 
-<div id='graph'></div>
+<div id='graph' style='width: 400px; height: 400px;'></div>
 
 <script type='text/javascript'>
-data = [ {
-'adjacencies' : [
-{% for link in connections  %}
-  {
-    'nodeFrom' : '{{ link.fromPerson.id }}',
-    'nodeTo' : '{{ link.toPerson.id }}',
-    'data' : { '$dim' : {{ link.weight }} }
-  } ,
-{% endfor %}
-]
-} ];
+{% autoescape off %}
+data = {{ json }};
+{% endautoescape %}
 
-var fd = new $jit.ForceDirected( {
-    injectInto: 'graph'
-} );
+var fd = new $jit.ForceDirected( {  
+  injectInto: 'graph'
+} );  
 
+// display data  
 fd.loadJSON(data);
+fd.refresh();
 </script>
