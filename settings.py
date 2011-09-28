@@ -100,4 +100,5 @@ INSTALLED_APPS = (
     'person',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+#    'django.contrib.staticfiles'
 )
