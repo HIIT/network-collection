@@ -22,7 +22,7 @@ def data( r , id ):
 	    weight = int( i[1] )
             c = Connection( fromPerson = person, toPerson = target, weight = weight )
             c.save()
-    return ''
+    return render_to_response('person/message.html', { 'message' : 'Data stored succesfully' } )
 
 def statistics(r):
     connections = Connection.objects.all()
