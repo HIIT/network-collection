@@ -1,9 +1,23 @@
+<style>
+.data {
+  margin: 0px;
+}
+
+.data:hover {
+    background: #ccc;
+}
+
+.second { 
+   background: #eee;
+}
+</style>
+
 <h1>{{ user.name }}</h1>
 
 <form action="/person/{{ user.id }}/entry" method="post">
 {% csrf_token %}
 {% for person in others %}
-    <p>
+    <p class='{% cycle 'first' 'second' %} data'>
     <b>{{ person.name }}</b>
     {# ugly, fixme! #}
     {% for i in '0123456789' %}
