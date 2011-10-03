@@ -1,7 +1,13 @@
+<style>
+.second {
+   background: #eee;
+}
+</style>
+
 {% if users %}
     <ul>
     {% for user in users %}
-        <li><a href="/person/{{ user.id }}">{{ user.name }}</a></li>
+        <li class='{% cycle 'first' 'second' %}'><a href="/person/{{ user.id }}">{{ user.name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
