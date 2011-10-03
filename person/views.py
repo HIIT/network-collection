@@ -40,3 +40,17 @@ def statistics(r):
                'adjacencies' : friends }
          js.append( p )
     return render_to_response('person/statics.html', { 'json' : json.dumps( js ) } )
+
+def export(r):
+    persons = Person.objects
+    out = ''
+    out += 'DL: n=' + str( persons.count() ) + '<br/>'
+    temp = []
+    for p in persons.all():
+       temp.append( p.display() )
+    out += ', '.join( temp ) + '<br/>'
+    out += 'format = edgelist1 <br/>'
+    out += 'labels embedded:<br/>'
+    for c in Connection.objects.all():
+        out += c.fromPerson.display() + ' ' + c.toPerson.display() + ' ' + str( float( c.weight ) ) + '<br/>'
+    return render_to_response('person/export.html', { 'data' : out } )
