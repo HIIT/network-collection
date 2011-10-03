@@ -14,6 +14,10 @@
 
 <h1>{{ user.name }}</h1>
 
+<p>
+How often you discuss & collaborate with (0 never - 9 we live together):
+</p>
+
 <form action="/person/{{ user.id }}/entry" method="post">
 {% csrf_token %}
 {% for person in others %}
