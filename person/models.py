@@ -6,6 +6,9 @@ class Person(models.Model):
     def __str__(self):
       return self.name
 
+    def display(self):
+        return self.name.replace(' ', '')[:18]
+
 class Connection(models.Model):
     fromPerson = models.ForeignKey( Person , related_name = 'from_set' )
     toPerson = models.ForeignKey( Person ,  related_name = 'toPerson' )
