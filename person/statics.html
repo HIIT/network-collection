@@ -30,19 +30,19 @@ var fd = new $jit.ForceDirected( {
     }  
   } ,
   Node: {
-    color : '#000',
+    color : '#999',
     type : 'circle',
-    dim : 10
+    dim : 15
   } ,
   Edge: {  
     overridable: true,  
-    color: 'green'
+    color: '#eee'
   } ,
   onCreateLabel: function(domElement, node){  
     domElement.innerHTML = node.name;  
     var style = domElement.style;  
     style.fontSize = "0.5em";
-    style.color = 'yellow';
+    style.color = '#000';
   } 
 } );  
 
