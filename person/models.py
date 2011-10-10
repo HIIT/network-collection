@@ -2,9 +2,9 @@ from django.db import models
 
 class Person(models.Model):
     name = models.CharField( max_length = 200 )
-    done = models.models.BooleanField(default=0)
+    done = models.BooleanField(default=0)
 
-    def __str__(self):
+    def __unicode__(self):
       return self.name
 
     def display(self):
