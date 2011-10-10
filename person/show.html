@@ -20,16 +20,18 @@ How often you discuss & collaborate with (0 never - 9 we live together):
 
 <form action="/person/{{ user.id }}/entry" method="post">
 {% csrf_token %}
+<table>
 {% for person in others %}
-    <p class='{% cycle 'first' 'second' %} data'>
-    <b>{{ person.name }}</b>
+    <tr class='{% cycle 'first' 'second' %} data'>
+    <td><b>{{ person.name }}</b></td>
     {# ugly, fixme! #}
     {% for i in '0123456789' %}
-    <input type='radio' name='connection_to_{{ person.id }}' value='{{i}}'> {{i}}
+    <td><input type='radio' name='connection_to_{{ person.id }}' value='{{i}}'> {{i}}</td>
     {% endfor %}
 
-    </p>
+    </tr>
 {% endfor %}
+</table>
 
 <input type='submit' />
 
