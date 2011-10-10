@@ -8,6 +8,7 @@ import json
 
 def index( r ):
     persons = Person.objects.all()
+    persons = persons.exclude( done = 1 )
     return render_to_response('person/index.html', {'users': persons } )
 
 def show( r , id ):
@@ -25,6 +26,8 @@ def data( r , id ):
             if weight > 0:
                 c = Connection( fromPerson = person, toPerson = target, weight = weight )
                 c.save()
+    person.done = 1
+    person.save()
     return render_to_response('person/message.html', { 'message' : 'Data stored succesfully' } )
 
 def statistics(r):
