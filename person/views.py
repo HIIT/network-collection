@@ -33,10 +33,13 @@ def data( r , id ):
 def statistics(r):
     js = []
     persons = Person.objects.all()
+
+    colors = [ None, '#eee' , '#eee', 'green', 'orange', 'red']
+
     for p in persons:
          friends = []
          for c in p.from_set.all():
-             q = { 'nodeTo' : 'person_' + str( c.toPerson.id ) , 'data' : { '$lineWidth' : c.weight * 2 } }
+             q = { 'nodeTo' : 'person_' + str( c.toPerson.id ) , 'data' : { '$lineWidth' : c.weight * 2 , '$color' : colors[ c.weight ] } }
              friends.append( q )
          p = { 'id' : 'person_' + str( p.id ) ,
                'name' : p.name ,
