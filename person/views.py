@@ -36,13 +36,13 @@ def statistics(r):
     for p in persons:
          friends = []
          for c in p.from_set.all():
-             q = { 'nodeTo' : 'person_' + str( c.toPerson.id ) , 'data' : { '$lineWidth' : c.weight } }
+             q = { 'nodeTo' : 'person_' + str( c.toPerson.id ) , 'data' : { '$lineWidth' : c.weight * 2 } }
              friends.append( q )
          p = { 'id' : 'person_' + str( p.id ) ,
                'name' : p.name ,
                'adjacencies' : friends }
          js.append( p )
-    return render_to_response('person/statics.html', { 'json' : json.dumps( js ) } )
+    return render_to_response('person/graph.html', { 'json' : json.dumps( js ) } )
 
 def export(r):
     persons = Person.objects
