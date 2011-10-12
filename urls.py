@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     # Example:
     (r'^person/$', 'sna.person.views.index' ),
     (r'^person/graph$', 'sna.person.views.statistics'),
-    (r'^person/export.ucinet$', 'sna.person.views.export'),
+    (r'^person/export.ucinet$', 'sna.person.views.ucinet'),
     (r'^person/(?P<id>\d+)/$', 'sna.person.views.show'),
     (r'^person/(?P<id>\d+)/entry$', 'sna.person.views.data'),
 

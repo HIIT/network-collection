@@ -47,7 +47,7 @@ def statistics(r):
          js.append( p )
     return render_to_response('person/graph.html', { 'json' : json.dumps( js ) } )
 
-def export(r):
+def ucinet(r):
     persons = Person.objects
     out = ''
     out += 'DL: n=' + str( persons.count() ) + '<br/>'
@@ -59,4 +59,4 @@ def export(r):
     out += 'labels embedded:<br/>'
     for c in Connection.objects.all():
         out += c.fromPerson.display() + ' ' + c.toPerson.display() + ' ' + str( float( c.weight ) ) + '<br/>'
-    return render_to_response('person/export.html', { 'data' : out } )
+    return render_to_response('person/export.ucinet', { 'data' : out } )
