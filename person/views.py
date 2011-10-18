@@ -50,13 +50,31 @@ def statistics(r):
 def ucinet(r):
     persons = Person.objects
     out = ''
-    out += 'DL: n=' + str( persons.count() ) + '<br/>'
+    out += 'DL n=' + str( persons.count() ) + '<br/>'
     temp = []
     for p in persons.all():
        temp.append( p.display() )
     out += ', '.join( temp ) + '<br/>'
     out += 'format = edgelist1 <br/>'
     out += 'labels embedded:<br/>'
+    out += 'data:<br/>'
     for c in Connection.objects.all():
         out += c.fromPerson.display() + ' ' + c.toPerson.display() + ' ' + str( float( c.weight ) ) + '<br/>'
-    return render_to_response('person/export.ucinet', { 'data' : out } )
+    return render_to_response('person/export.file', { 'data' : out } )
+
+def csv(r):
+     persons = Person.objects.all()
+     persons2 = Person.objects.all()
+     connections = COnnection.objects.all()
+     out = ''
+     for p in persons:
+         array = []
+         array.append( p.display() )
+         contacts = map( lambda c : c.toPerson, p.from_set.all() )
+         for p2 in persons2:
+             if p2 in contacts:
+                 array.append( str( 'x' ) )
+             else:
+                 array.append( '0' )
+         out += ','.join( array ) + '<br/>'
+     return render_to_response('person/export.file', { 'data' : out } )
