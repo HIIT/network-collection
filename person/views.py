@@ -65,7 +65,7 @@ def ucinet(r):
 def csv(r):
      persons = Person.objects.all()
      persons2 = Person.objects.all()
-     connections = COnnection.objects.all()
+     connections = Connection.objects.all()
      out = ''
      for p in persons:
          array = []
