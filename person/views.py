@@ -70,10 +70,12 @@ def csv(r):
      for p in persons:
          array = []
          array.append( p.display() )
-         contacts = map( lambda c : c.toPerson, p.from_set.all() )
+         w = {}
+         for c in p.from_set.all():
+             w[ c.toPerson ] = c.weight
          for p2 in persons2:
-             if p2 in contacts:
-                 array.append( str( 'x' ) )
+             if p2 in w.keys():
+                 array.append( str( w[ p2 ] ) )
              else:
                  array.append( '0' )
          out += ','.join( array ) + '<br/>'
